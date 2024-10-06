@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Lista de Tarefas</title>
+  </head>
+  <body>
+    <h1>Lista de Tarefas</h1>
+    <button onclick="adicionarTarefas()">Adicionar Tarefas</button>
+    <p id="listaTarefas"></p>
+
+    <script>
+      let tarefas = [];
+
+      function adicionarTarefas() {
+        tarefas = [];
+
+        for (let i = 0; i < 5; i++) {
+          let tarefa = solicitarTarefa(i + 1);
+          if (tarefa) {
+            tarefas.push(tarefa);
+          }
+        }
+
+        exibirTarefas();
+        marcarConcluida();
+        exibirTarefas();
+      }
+
+      function solicitarTarefa(numero) {
+        return prompt(`Digite a tarefa ${numero}:`);
+      }
+
+      function exibirTarefas() {
+        let listaTexto = "";
+        tarefas.forEach((tarefa, index) => {
+          listaTexto += `${index + 1}. ${tarefa}\n`;
+        });
+        document.getElementById("listaTarefas").innerText = listaTexto;
+      }
+
+      function marcarConcluida() {
+        let indice =
+          parseInt(
+            prompt(
+              "Qual tarefa deseja marcar como concluída? (Digite o número da tarefa)"
+            )
+          ) - 1;
+
+        if (indice >= 0 && indice < tarefas.length) {
+          removerTarefa(indice);
+        } else {
+          alert("Número inválido. Nenhuma tarefa removida.");
+        }
+      }
+
+      function removerTarefa(indice) {
+        tarefas.splice(indice, 1);
+      }
+    </script>
+  </body>
+</html>

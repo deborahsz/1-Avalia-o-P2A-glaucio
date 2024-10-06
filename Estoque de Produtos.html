@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Calculando Valor Total do Estoque</title>
+  </head>
+  <body>
+    <h1>Valor Total do Estoque</h1>
+
+    <script>
+      const produtos = [
+        { nome: "Produto 1", preco: 10.0, quantidade: 5 },
+        { nome: "Produto 2", preco: 20.0, quantidade: 3 },
+        { nome: "Produto 3", preco: 15.0, quantidade: 4 },
+      ];
+
+      function calcularValorTotalEstoque(produtos) {
+        let valorTotal = 0;
+
+        for (let i = 0; i < produtos.length; i++) {
+          valorTotal += produtos[i].preco * produtos[i].quantidade;
+        }
+
+        return valorTotal;
+      }
+
+      const valorTotalEstoque = calcularValorTotalEstoque(produtos);
+      console.log("Valor total do estoque: R$", valorTotalEstoque.toFixed(2));
+    </script>
+  </body>
+</html>
